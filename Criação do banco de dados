@@ -39,9 +39,9 @@ db.Autores.find({}, {idade:1, nome:1)
 db.Autores.find({}, {_id:0, idade:1, nome:1)
 
 # define idade = 23 onde nome = Ana no documento
-db.Autores.updateOne({ nome:"Ana" }, { $set { idade: 23} } )
+db.Autores.updateOne({ nome:"Ana" }, { $set: { idade: 23} } )
 # exclui o dado idade onde nome = Pessoa1 no documento
-db.Autores.updateOne({ nome:"Pessoa1" }, { $unset { idade: 23} } )
+db.Autores.updateOne({ nome:"Pessoa1" }, { $unset: { idade: 23} } )
 
 # exclui o documento que contem nome = Pessoa1 na collection
 db.Prova2.deleteOne({ nome: "Pessoa1"})
