@@ -1,0 +1,47 @@
+# usa um banco de dados existente ou cria
+use Prova2
+
+# mostra os bancos de dados
+show dbs
+
+# cria um documento
+db.createCollection("Autores")
+
+# insere os dados no documento
+db.Autores.insertOne({
+	nome: "Pessoa1",
+	idade: 23
+})
+
+# insere varios dados de uma vez
+db.Autores.InsertMany({
+	nome: "Ana",
+	idade: 22,
+	Formacao: [ titulo:"Fatec", Date(2023)]
+},
+{
+db.Autores.InsertMany({
+	nome: "Otavio",
+	idade: 22,
+	Formacao: [{ titulo:"Fatec", data: 2023}]
+}
+})
+
+# lista todos os dados do documento
+db.Autores.find()
+# lista os dados que contenham a idade = 22 
+db.Autores.find({ idade:"22"})
+# lista um dado que contenha a idade = 22
+db.Autores.findOne({ idade:"22"})
+# lista apenas as idades e os nomes que estão no documento
+db.Autores.find({}, {idade:1, nome:1)
+# lista as idades, os nomes, mas não o id
+db.Autores.find({}, {_id:0, idade:1, nome:1)
+
+# define idade = 23 onde nome = Ana no documento
+db.Autores.updateOne({ nome:"Ana" }, { $set { idade: 23} } )
+# exclui o dado idade onde nome = Pessoa1 no documento
+db.Autores.updateOne({ nome:"Pessoa1" }, { $unset { idade: 23} } )
+
+# exclui o documento que contem nome = Pessoa1 na collection
+db.Prova2.deleteOne({ nome: "Pessoa1"})
